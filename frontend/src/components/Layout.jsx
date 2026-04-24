@@ -188,7 +188,6 @@ const Layout = ({ onLogout, user }) => {
 
             <div className="bg-white rounded-xl p-4 sm:p-5 shadow-sm border border-purple-100">
               <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800 flex items-center gap-2">
-                Recent Activity
                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
                 Recent Activities
               </h3>
