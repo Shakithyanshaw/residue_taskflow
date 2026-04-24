@@ -1,4 +1,4 @@
-import User from '../models/userModel';
+import User from '../models/userModel.js';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -14,7 +14,7 @@ export async function registerUser(req, res) {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    return res.this
+    return res
       .status(400)
       .json({ success: false, message: 'All fields are required' });
   }
@@ -35,7 +35,7 @@ export async function registerUser(req, res) {
         .json({ success: false, message: 'User already exists' });
     }
     const hashed = await bcrypt.hash(password, 10);
-    const user = await User.Create({ name, email, password: hashed });
+    const user = await User.create({ name, email, password: hashed });
     const token = createToken(user._id);
 
     res.status(201).json({
