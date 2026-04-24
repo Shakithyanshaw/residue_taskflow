@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { ChevronDown, LogOut, Settings, Zap } from 'lucide-react';
 import { useRef, useState } from 'react';
 
-const Navbar = () => {
+const Navbar = ({ user = {}, onLogout }) => {
   const menuref = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -87,7 +87,6 @@ const Navbar = () => {
                   >
                     <Settings className="w-4 h-4 text-gray-700" />
                     <span>Profile Settings</span>
-                    Profile Setting
                   </button>
                 </li>
                 <li className="p-2">

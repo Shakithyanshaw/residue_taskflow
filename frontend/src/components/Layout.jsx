@@ -1,7 +1,9 @@
-const Layout = () => {
+import Navbar from './Navbar';
+
+const Layout = ({ onLogout, user }) => {
   return (
-    <div>
-      <h1>Layout</h1>
+    <div className="min-h-screen bg-gray-50">
+      <Navbar user={user} onLogout={onLogout} />
     </div>
   );
 };
