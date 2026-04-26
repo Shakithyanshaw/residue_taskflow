@@ -2,94 +2,103 @@
 
 ## 1. Backend Choice Justification
 
-For this project, I will use **Express.js (Node.js)** as the backend framework.
+For this project, I chose **Express.js (Node.js)** as the backend framework.
 
 ### Reason:
 
-- Lightweight and fast for building REST APIs
-- Large ecosystem and community support
+- Lightweight and fast for REST API development
 - Easy integration with MongoDB using Mongoose
-- Better control over architecture compared to Next.js API routes
-- Ideal for scalable API design and separation of concerns
+- Flexible middleware system (authentication, validation)
+- Large ecosystem and community support
+- Suitable for scalable and modular API design
 
 ---
 
-## 2. High-Level Architecture
+2. Frontend Choice Justification
 
-### System Design:
+For the frontend, I chose Next.js (React framework).
 
-Frontend (Next.js)
-↓ HTTP Requests (JWT Auth)
-Backend (Express.js API)
-↓
-MongoDB Database
+### Reason:
 
-### Modules:
+-Built-in routing system
+-Server-side rendering (better performance & SEO)
+-Easy API integration with backend
+-Component-based architecture for reusable UI
+-Ideal for modern full-stack applications
 
-- Authentication Module (Register/Login/Refresh)
-- Task Management Module (CRUD)
-- Middleware Layer (Auth, validation, error handling)
-- Database Layer (MongoDB via Mongoose)
+## 3. Architecture Overview
+
+### High-Level Architecture:
+
+Frontend (Next.js) → Backend API (Express.js) → Database (MongoDB)
+
+### Backend Structure:
+
+- **Routes Layer** → Handles API endpoints
+- **Controller Layer** → Business logic
+- **Middleware Layer** → Authentication (JWT)
+- **Models Layer** → Mongoose schemas (User, Task)
+- **Database Layer** → MongoDB
+
+### Flow:
+
+1. User registers/logs in → receives JWT
+2. JWT is sent in Authorization header
+3. Middleware verifies token and attaches user
+4. User performs CRUD operations on tasks
+5. Each task is linked to the authenticated user
 
 ---
 
-## 3. Security Considerations
+## 4. Security Considerations
 
-### Client-Side:
+### Authentication & Authorization
 
-- Prevent XSS using proper input sanitization
-- Store JWT in HTTP-only cookies (avoid localStorage)
-- Implement route protection in frontend
+- JWT-based authentication
+- Protected routes using middleware
+- Users can only access their own tasks
 
-### Server-Side:
+### Data Protection
 
 - Password hashing using bcrypt
-- JWT authentication with expiration
-- Input validation using middleware
-- Rate limiting to prevent brute force attacks
-- Centralized error handling (avoid stack trace exposure)
-- CORS configured properly
+- Sensitive data excluded (password not returned)
+
+### Input Validation
+
+- Email validation using validator
+- Password minimum length enforcement
+- Basic request validation in controllers
+
+### Error Handling
+
+- Proper status codes (400, 401, 404, 500)
+- No sensitive stack traces exposed
+
+### Potential Improvements
+
+- Add rate limiting (prevent brute force attacks)
+- Add input sanitization (prevent XSS, NoSQL injection)
+- Use HTTP-only cookies for token storage (better security)
+- Add Helmet for security headers
+- Implement refresh tokens
 
 ---
 
-## 4. API Structure
+## 5. Better Tech Choices (Optional Improvements)
 
-### Auth Routes:
-
-- POST /auth/register
-- POST /auth/login
-- POST /auth/refresh
-
-### Task Routes:
-
-- GET /tasks
-- POST /tasks
-- PUT /tasks/:id
-- DELETE /tasks/:id
+- **TypeScript** → Better type safety and maintainability
+- **Zod/Joi** → Strong schema validation
+- **Redis** → Token/session management
+- **Docker** → Containerized deployment
+- **Winston/Morgan** → Logging system
 
 ---
 
-## 5. Data Security Rules
-
-- Users can only access their own tasks
-- Authorization middleware checks user ID from JWT
-- No sensitive data exposed in API responses
-
----
-
-## 6. Optional Improvements
-
-- Add task filtering & sorting
-- Add activity logs
-- Add task priority analytics dashboard
-
----
-
-## 7. Summary
+## 6. Summary
 
 This architecture ensures:
 
-- Secure authentication system
+- Secure authentication
+- Clean separation of concerns
 - Scalable backend structure
-- Clean separation between frontend and backend
-- Production-ready API design
+- Maintainable and production-ready API design
