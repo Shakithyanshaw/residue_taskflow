@@ -57,7 +57,7 @@ const Login = ({ onSubmit, onSwitchMode }) => {
       setFormData(INITIAL_FORM);
       onSubmit?.({ token: data.token, userId: data.user.id, ...data.user });
       toast.success('Login successful! Redriecting...');
-      setTimeout(() => navigate('/'), 1000);
+      setTimeout(() => navigate('/'), 5000);
     } catch (err) {
       const msg = err.response?.data?.message || err.data;
       toast.error(msg);
