@@ -30,7 +30,7 @@ For the frontend, I chose Next.js (React framework).
 
 ### High-Level Architecture:
 
-Frontend (Next.js) → Backend API (Express.js) → Database (MongoDB)
+Frontend (Next.js) → Backend API (Express.js & Node.js) → Database (MongoDB)
 
 ### Backend Structure:
 
