@@ -190,17 +190,3 @@ NEXT_PUBLIC_API_URL=http://localhost:4000/api
 ```
 
 ---
-
-## 📌 Future Improvements
-
-- Rate limiting
-- Refresh tokens
-- Input sanitization
-- Role-based access
-- Notifications / reminders
-
----
-
-## 📬 Conclusion
-
-This is a complete full-stack Task Management System with secure authentication, clean architecture, and scalable design.
